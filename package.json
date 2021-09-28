@@ -1,0 +1,34 @@
+{
+  "name": "web-mui",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@mui/icons-material": "^5.0.1",
+    "@mui/material": "^5.0.1",
+    "@mui/system": "^5.0.1",
+    "@mui/utils": "^5.0.1",
+    "dayjs": "^1.10.7",
+    "history": "^5.0.1",
+    "lodash-es": "^4.17.21",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-router-dom": "^6.0.0-beta.5",
+    "react-syntax-highlighter": "^15.4.4",
+    "zustand": "^3.5.10"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.1",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-syntax-highlighter": "^13.5.2",
+    "@vitejs/plugin-react": "^1.0.0",
+    "typescript": "^4.3.2",
+    "vite": "^2.5.4"
+  }
+}
