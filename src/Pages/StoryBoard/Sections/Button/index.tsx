@@ -13,7 +13,7 @@ type ButtonColors =
   | "error"
   | "info"
   | undefined;
-const colors = [
+const colors: ButtonColors[] = [
   "primary",
   "secondary",
   "info",
@@ -23,17 +23,18 @@ const colors = [
   "error",
 ];
 
-const variants = ["contained", "text", "outlined", "dashed"];
+const variants: ButtonVariant[] = ["contained", "text", "outlined", "dashed"];
 
 const SectionButton = () => {
   return (
     <ExpandableCard title="Buttons">
+      <Button color="tertiary">Tertiary</Button>
       <WrapperStack divider={<Divider sx={{ my: 1 }} />}>
-        {colors.map((colorName: ButtonColors, colorIndex) => (
+        {colors.map((colorName, colorIndex) => (
           <Stack
             key={colorIndex}
             divider={<Divider orientation="vertical" sx={{ height: 20 }} />}
-            direction="row"
+            flexDirection="row"
             justifyContent="space-around"
             alignItems="center"
           >
@@ -41,6 +42,7 @@ const SectionButton = () => {
               <Button
                 key={variantIndex}
                 variant={variantName}
+                //@ts-ignore
                 color={colorName}
               >
                 {variantName} - {colorName}

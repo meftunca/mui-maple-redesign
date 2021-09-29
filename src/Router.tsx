@@ -14,7 +14,7 @@ const GenerateRoutes = () => {
 };
 const useCreateRoutes = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.PROD ? "mui-maple-redesign" : ""}>
       <GenerateRoutes />
     </BrowserRouter>
   );

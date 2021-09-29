@@ -72,6 +72,7 @@ const PageWrapper: React.FC<Props> = (props) => {
       <CssBaseline />
       <AppBar
         position="fixed"
+        color="secondary"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
@@ -96,6 +97,8 @@ const PageWrapper: React.FC<Props> = (props) => {
             control={
               <Switch
                 value={current}
+                //@ts-ignore
+                color="tertiary"
                 onChange={() =>
                   changeTheme(current === "Dark" ? "Default" : "Dark")
                 }

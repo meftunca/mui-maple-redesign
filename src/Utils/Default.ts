@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { createTheme, responsiveFontSizes } from "@mui/material";
 import { blue, blueGrey } from "@mui/material/colors";
 
 const colors = [
@@ -52,29 +52,34 @@ const paletteColors = {
 };
 
 const DefaultTheme = (mode: "light" | "dark") =>
-  createTheme({
-    palette: { ...paletteColors, mode },
-    components: {
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            borderRadius: 6,
-            margin: 2,
-          },
-        },
-        //@ts-ignore
-        variants: [
-          ...colors.map((a) => ({
-            props: { variant: "dashed", color: a },
-            style: {
-              border: "1px dashed " + paletteColors[a].main,
-              color: paletteColors[a].main,
-            },
-          })),
-        ],
+  responsiveFontSizes(
+    createTheme({
+      palette: { ...paletteColors, mode },
+      shape: {
+        borderRadius: 12,
       },
-    },
-  });
+      components: {
+        MuiButton: {
+          styleOverrides: {
+            root: {
+              borderRadius: 6,
+              margin: 2,
+            },
+          },
+          //@ts-ignore
+          variants: [
+            ...colors.map((a) => ({
+              props: { variant: "dashed", color: a },
+              style: {
+                border: "1px dashed " + paletteColors[a].main,
+                color: paletteColors[a].main,
+              },
+            })),
+          ],
+        },
+      },
+    })
+  );
 
 export const themeGenerator = DefaultTheme;
 

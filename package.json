@@ -4,31 +4,33 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "pages:push": "tsc && vite build --config vite.github.ts;gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
-    "@mui/icons-material": "^5.0.1",
-    "@mui/material": "^5.0.1",
-    "@mui/system": "^5.0.1",
-    "@mui/utils": "^5.0.1",
+    "@mui/icons-material": "latest",
+    "@mui/material": "latest",
+    "@mui/system": "latest",
+    "@mui/utils": "latest",
     "dayjs": "^1.10.7",
-    "history": "^5.0.1",
+    "history": "latest",
     "lodash-es": "^4.17.21",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "react-router-dom": "^6.0.0-beta.5",
+    "react": "next",
+    "react-dom": "next",
+    "react-router-dom": "next",
     "react-syntax-highlighter": "^15.4.4",
-    "zustand": "^3.5.10"
+    "zustand": "^3.5.11"
   },
   "devDependencies": {
     "@types/node": "^16.10.1",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
     "@types/react-syntax-highlighter": "^13.5.2",
-    "@vitejs/plugin-react": "^1.0.0",
-    "typescript": "^4.3.2",
-    "vite": "^2.5.4"
+    "@vitejs/plugin-react": "latest",
+    "gh-pages": "^3.2.3",
+    "typescript": "latest",
+    "vite": "latest"
   }
 }
