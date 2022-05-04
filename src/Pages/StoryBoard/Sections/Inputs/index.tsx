@@ -1,5 +1,4 @@
 import { Divider, Stack } from "@mui/material";
-import ExpandableCard from "PageDesign/ExpandableCard";
 import React from "react";
 import CheckboxesScreen from "./Checkbox";
 import RadioScreen from "./Radio";
@@ -11,7 +10,7 @@ import TextFieldScreen from "./TextField";
 
 const SectionInput = () => {
   return (
-    <ExpandableCard title="Inputs">
+    <>
       <Stack divider={<Divider sx={{ my: 2 }} />}>
         <TextFieldScreen />
         <CheckboxesScreen />
@@ -21,7 +20,7 @@ const SectionInput = () => {
         <SelectExampleScreen />
         <SliderExampleScreen />
       </Stack>
-    </ExpandableCard>
+    </>
   );
 };
 

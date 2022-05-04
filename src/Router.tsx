@@ -1,23 +1,22 @@
+import MapleBoard from "Pages/MapleBoard";
 import React from "react";
 import { BrowserRouter, RouteObject, useRoutes } from "react-router-dom";
-import StoryBoardPage from "./Pages/StoryBoard";
+import App from "./App";
+import StoryBoardRoutes from "./Pages/StoryBoard";
 
-const routes: RouteObject[] = [
-  {
-    path: "/",
-    element: <StoryBoardPage />,
-  },
-];
+const routes: RouteObject[] = [StoryBoardRoutes, MapleBoard];
 const GenerateRoutes = () => {
   const renderedRoutes = useRoutes(routes);
   return renderedRoutes;
 };
-const useCreateRoutes = () => {
+const Router = () => {
   return (
     <BrowserRouter basename={import.meta.env.PROD ? "mui-maple-redesign" : ""}>
-      <GenerateRoutes />
+      <App>
+        <GenerateRoutes />
+      </App>
     </BrowserRouter>
   );
 };
 
-export default useCreateRoutes;
+export default Router;

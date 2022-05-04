@@ -7,7 +7,7 @@ import {
   Divider,
   IconButton,
 } from "@mui/material";
-import React from "react";
+import React, { memo, useState } from "react";
 import createStore from "zustand";
 
 type CollapseStateTypes = {
@@ -16,9 +16,13 @@ type CollapseStateTypes = {
 };
 
 const useCollapseState = createStore<CollapseStateTypes>((set) => ({
-  actvieCollapse: localStorage.getItem("active-board:id") || "Buttons",
+  actvieCollapse:
+    localStorage.getItem(location.pathname + "active-board:id") || "Buttons",
   setActiveCollapse: (newCollapseId: string | null) => {
-    localStorage.setItem("active-board:id", String(newCollapseId));
+    localStorage.setItem(
+      location.pathname + "active-board:id",
+      String(newCollapseId)
+    );
     set({ actvieCollapse: newCollapseId });
   },
 }));
@@ -28,6 +32,7 @@ type ExpandableCardProps = {
 };
 
 const ExpandableCard: React.FC<ExpandableCardProps> = ({ title, children }) => {
+  const [mount, setMount] = useState(false);
   const { actvieCollapse, setActiveCollapse } = useCollapseState();
   return (
     <Card elevation={actvieCollapse === title ? 2 : 0} sx={{ m: 2 }}>
@@ -55,11 +60,15 @@ const ExpandableCard: React.FC<ExpandableCardProps> = ({ title, children }) => {
         }
       />
       <Divider />
-      <Collapse in={actvieCollapse === title}>
-        <CardContent>{children}</CardContent>
+      <Collapse
+        in={actvieCollapse === title}
+        onExited={() => setMount(false)}
+        onEntering={() => setMount(true)}
+      >
+        <CardContent>{mount && children}</CardContent>
       </Collapse>
     </Card>
   );
 };
 
-export default ExpandableCard;
+export default memo(ExpandableCard);

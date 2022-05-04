@@ -1,5 +1,4 @@
 import { Button, Divider, Stack } from "@mui/material";
-import ExpandableCard from "PageDesign/ExpandableCard";
 import React from "react";
 const WrapperStack = Stack;
 
@@ -27,7 +26,7 @@ const variants: ButtonVariant[] = ["contained", "text", "outlined", "dashed"];
 
 const SectionButton = () => {
   return (
-    <ExpandableCard title="Buttons">
+    <>
       <Button color="tertiary">Tertiary</Button>
       <WrapperStack divider={<Divider sx={{ my: 1 }} />}>
         {colors.map((colorName, colorIndex) => (
@@ -51,7 +50,7 @@ const SectionButton = () => {
           </Stack>
         ))}
       </WrapperStack>
-    </ExpandableCard>
+    </>
   );
 };
 

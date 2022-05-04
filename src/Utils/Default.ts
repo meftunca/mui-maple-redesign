@@ -1,4 +1,4 @@
-import { createTheme, responsiveFontSizes } from "@mui/material";
+import { createTheme } from "@mui/material";
 import { blue, blueGrey } from "@mui/material/colors";
 
 const colors = [
@@ -11,6 +11,15 @@ const colors = [
   "error",
   "info",
 ];
+
+const lightThemeBG = {
+  paper: "#ffffff",
+  default: "#fefefe",
+};
+const darkThemeBG = {
+  paper: "#222222",
+  default: "#111111",
+};
 
 const paletteColors = {
   primary: {
@@ -52,34 +61,36 @@ const paletteColors = {
 };
 
 const DefaultTheme = (mode: "light" | "dark") =>
-  responsiveFontSizes(
-    createTheme({
-      palette: { ...paletteColors, mode },
-      shape: {
-        borderRadius: 12,
-      },
-      components: {
-        MuiButton: {
-          styleOverrides: {
-            root: {
-              borderRadius: 6,
-              margin: 2,
-            },
+  createTheme({
+    palette: {
+      ...paletteColors,
+      background: mode === "light" ? lightThemeBG : darkThemeBG,
+      mode,
+    },
+    shape: {
+      borderRadius: 12,
+    },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            borderRadius: 6,
+            margin: 2,
           },
-          //@ts-ignore
-          variants: [
-            ...colors.map((a) => ({
-              props: { variant: "dashed", color: a },
-              style: {
-                border: "1px dashed " + paletteColors[a].main,
-                color: paletteColors[a].main,
-              },
-            })),
-          ],
         },
+        //@ts-ignore
+        variants: [
+          ...colors.map((a) => ({
+            props: { variant: "dashed", color: a },
+            style: {
+              border: "1px dashed " + paletteColors[a].main,
+              color: paletteColors[a].main,
+            },
+          })),
+        ],
       },
-    })
-  );
+    },
+  });
 
 export const themeGenerator = DefaultTheme;
 

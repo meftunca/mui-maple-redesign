@@ -1,5 +1,4 @@
 import { Divider, Stack } from "@mui/material";
-import ExpandableCard from "PageDesign/ExpandableCard";
 import React from "react";
 import BasicPagination from "./Contained";
 import PaginationOutlined from "./Outlined";
@@ -10,7 +9,7 @@ import TablePaginationDemo from "./Table";
 
 const SectionPagination = () => {
   return (
-    <ExpandableCard title="Pagination">
+    <>
       <Stack divider={<Divider sx={{ my: 1 }} />}>
         <BasicPagination />
         <PaginationOutlined />
@@ -19,7 +18,7 @@ const SectionPagination = () => {
         <PaginationRanges />
         <TablePaginationDemo />
       </Stack>
-    </ExpandableCard>
+    </>
   );
 };
 

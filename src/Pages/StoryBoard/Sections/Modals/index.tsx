@@ -1,5 +1,4 @@
 import { Divider, Stack } from "@mui/material";
-import ExpandableCard from "PageDesign/ExpandableCard";
 import React from "react";
 import AddUserDialog from "./Examples/AddUser";
 import AlertDialog from "./Examples/Alert";
@@ -9,7 +8,7 @@ import OptionaSizeDialog from "./Examples/OptionalSize";
 import SignUpDialog from "./Examples/SignUp";
 const SectionModal = () => {
   return (
-    <ExpandableCard title="Dialogs">
+    <>
       <Stack divider={<Divider sx={{ my: 1 }} />}>
         <AddUserDialog />
         <AlertDialog />
@@ -18,7 +17,7 @@ const SectionModal = () => {
         <OptionaSizeDialog />
         <ConfirmationDialog />
       </Stack>
-    </ExpandableCard>
+    </>
   );
 };
 
