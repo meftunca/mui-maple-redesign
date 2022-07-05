@@ -1,5 +1,7 @@
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import {
+  Collapse,
   CSSObject,
   styled,
   Theme,
@@ -14,9 +16,9 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
   transition: theme.transitions.create("all", {
@@ -56,6 +58,12 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
+type RouteItem = {
+  path: string;
+  title: string;
+  icon?: JSX.Element;
+  children?: RouteItem[];
+};
 const RouteList = [
   {
     path: "/story-board",
@@ -66,6 +74,57 @@ const RouteList = [
     path: "/maple-board",
     title: "Maple Board",
     icon: <InboxIcon />,
+  },
+  {
+    path: "/company-settings",
+    title: "Company Settings",
+    icon: <InboxIcon />,
+    children: [
+      {
+        path: "/company-settings/coaching",
+        title: "Coaching Competences",
+      },
+      {
+        path: "/company-settings/buildings",
+        title: "Buildings",
+      },
+      {
+        path: "/company-settings/employees",
+        title: "Employees",
+      },
+      {
+        path: "/company-settings/users",
+        title: "Users",
+      },
+      {
+        path: "/company-settings/departments",
+        title: "Departments",
+      },
+      {
+        path: "/company-settings/roles",
+        title: "Roles",
+      },
+      {
+        path: "/company-settings/permissions",
+        title: "Permissions",
+      },
+      {
+        path: "/company-settings/districts",
+        title: "Districts",
+      },
+      {
+        path: "/company-settings/locations",
+        title: "Locations",
+      },
+      {
+        path: "/company-settings/regions",
+        title: "Regions",
+      },
+      {
+        path: "/company-settings/countries",
+        title: "Countries",
+      },
+    ].sort((a, b) => a.title.localeCompare(b.title)),
   },
 ];
 
@@ -87,11 +146,8 @@ const AppDrawer: React.FC<Props> = ({ open, handleDrawerToggle }) => {
       <Toolbar />
       <Divider />
       <List>
-        {RouteList.map(({ icon, title, path }, index) => (
-          <ListItem button key={path} onClick={() => navigate(path)}>
-            <ListItemIcon>{icon}</ListItemIcon>
-            <ListItemText primary={title} />
-          </ListItem>
+        {RouteList.map((props, index) => (
+          <RenderRouteItem key={index} navigate={navigate} {...props} />
         ))}
       </List>
     </div>
@@ -101,6 +157,45 @@ const AppDrawer: React.FC<Props> = ({ open, handleDrawerToggle }) => {
     <Drawer variant={"permanent"} open={open} onClose={handleDrawerToggle}>
       {drawer}
     </Drawer>
+  );
+};
+
+const RenderRouteItem = ({
+  icon,
+  title,
+  path,
+  children,
+  navigate,
+}: RouteItem & { navigate: NavigateFunction }) => {
+  const [open, setOpen] = React.useState(false);
+  if (Array.isArray(children) && children.length > 0) {
+    return (
+      <>
+        <ListItem
+          button
+          onClick={() => setOpen(!open)}
+          key={title}
+          selected={open}
+        >
+          {icon && <ListItemIcon>{icon}</ListItemIcon>}
+          <ListItemText primary={title} />
+          {open ? <ExpandLess /> : <ExpandMore />}
+        </ListItem>
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <List sx={{ paddingLeft: 7 }} component="div" disablePadding>
+            {children.map((props, index) => (
+              <RenderRouteItem key={index} navigate={navigate} {...props} />
+            ))}
+          </List>
+        </Collapse>
+      </>
+    );
+  }
+  return (
+    <ListItem button key={path} onClick={() => path && navigate(path)}>
+      {icon && <ListItemIcon>{icon}</ListItemIcon>}
+      <ListItemText primary={title} />
+    </ListItem>
   );
 };
 

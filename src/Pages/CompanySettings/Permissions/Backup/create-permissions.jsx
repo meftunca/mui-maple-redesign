@@ -78,7 +78,7 @@ function CreatePermission({ ...props }) {
             name={"companyId"}
             rules={[{ required: true, type: "string" }]}
           >
-            <Select>
+            <Select showSearch>
               {companyList.map((i, k) => (
                 <Select.Option key={k} value={i.id}>
                   {i.name}
@@ -91,7 +91,9 @@ function CreatePermission({ ...props }) {
         <Form.Item
           label={t("settings.permissions.create-permission.name.label")}
           name="name"
-          rules={[{ required: true, message: "Bu Alan Boş Bırakılamaz" }]}
+          rules={[
+            { required: true, message: "This field cannot be left blank" },
+          ]}
         >
           <Input
             type="text"

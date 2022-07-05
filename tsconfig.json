@@ -21,6 +21,7 @@
       "Components/*": ["./Components/*"],
       "Utils/*": ["./Utils/*"],
       "Store/*": ["./Store/*"],
+      "Core/*": ["./Core/*"],
       "PageDesign/*": ["./PageDesign/*"]
     }
   },

@@ -1,6 +1,7 @@
 import { AddOutlined } from "@mui/icons-material";
-import { Button, Divider, Drawer, Form, Input } from "@mui/material";
+import { Button, Divider, Drawer, Input } from "@mui/material";
 import { RetailAPI } from "Core/API";
+import { Form } from "formik";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -18,7 +19,6 @@ const CreateCoachingCompetencesItem = ({ fetchCompetencesList }) => {
       >
         {t("navigation.companySettings.coaching.competenceItemsTitle")}
       </Button>
-
       <Drawer
         open={visible}
         onClose={() => setVisible(false)}

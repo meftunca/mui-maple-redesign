@@ -1,7 +1,7 @@
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { defineConfig } from "vite";
-/* 
+/*
       "Pages/*": ["./Pages/*"],
       "Components/*": ["./Components/*"],
       "Utils/*": ["./Utils/*"],
@@ -14,6 +14,7 @@ export default defineConfig({
   resolve: {
     alias: [
       { find: /^~/, replacement: "" },
+      { find: /^Core/, replacement: path.resolve("./src/Core") },
       { find: /^Pages/, replacement: path.resolve("./src/Pages") },
       { find: /^Components/, replacement: path.resolve("./src/Components") },
       { find: /^Utils/, replacement: path.resolve("./src/Utils") },

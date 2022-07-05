@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Form, Input, Button, Select, message, Drawer } from "antd";
+import { Button, Drawer, Form, Input, message, Select } from "antd";
 import { CoreAPI, RetailAPI } from "Core/API";
-import checkPermissions from "Retail/Helpers/checkPermissions";
 import { isObject } from "lodash-es";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import checkPermissions from "Retail/Helpers/checkPermissions";
 
 const CreateNewDistrictForm = ({ visible, onClose, isEdit, editData }) => {
   const [companies, setCompanies] = useState([]);
@@ -104,7 +104,7 @@ const CreateNewDistrictForm = ({ visible, onClose, isEdit, editData }) => {
               name={"companyId"}
               rules={[{ required: true, type: "string" }]}
             >
-              <Select>
+              <Select showSearch>
                 {companies.map((i, k) => (
                   <Select.Option key={k} value={i.id}>
                     {i.name}
@@ -123,7 +123,7 @@ const CreateNewDistrictForm = ({ visible, onClose, isEdit, editData }) => {
             <Input />
           </Form.Item>
           <Form.Item label="Yönetici" name={"managerId"}>
-            <Select>
+            <Select showSearch>
               {users.map((i, k) => (
                 <Select.Option key={k} value={i.employeeId}>
                   {i.name}

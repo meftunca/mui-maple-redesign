@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Form, Input, Button, Select, message, InputNumber } from "antd";
+import { Button, Form, Input, InputNumber, message, Select } from "antd";
 import { CoreAPI } from "Core/API";
+import React from "react";
 
 /*
 	req := struct {
@@ -66,13 +66,13 @@ const CreateCompanyForm = () => {
           name={"industries"}
           rules={[{ required: true, type: "array" }]}
         >
-          <Select>
+          <Select showSearch>
             <Select.Option value={"RETAIL"}>Retail</Select.Option>
             <Select.Option value={"EDUCATION"}>Education</Select.Option>
           </Select>
         </Form.Item>
         <Form.Item label="Aktif Olarak Başlasın" name="active">
-          <Select>
+          <Select showSearch>
             <Select.Option value={true}>Aktif</Select.Option>
             <Select.Option value={false}>Pasif</Select.Option>
           </Select>

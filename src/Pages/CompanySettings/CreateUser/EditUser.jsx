@@ -130,7 +130,7 @@ const EditNewUserForm = ({ visible, initial, onClose }) => {
               </Select>
             </Form.Item>
             <Form.Item label="İzinler" name={["permissionId"]}>
-              <Select>
+              <Select showSearch>
                 {(permissions || []).map((i, k) => (
                   <Select.Option key={k} value={i.id}>
                     {i.name}
@@ -139,7 +139,7 @@ const EditNewUserForm = ({ visible, initial, onClose }) => {
               </Select>
             </Form.Item>
             <Form.Item label="Çalıştığı Mağaza" name={["buildingId"]}>
-              <Select>
+              <Select showSearch>
                 {(buildings || []).map((i, k) => (
                   <Select.Option key={i.id} value={i.id}>
                     {i.name}

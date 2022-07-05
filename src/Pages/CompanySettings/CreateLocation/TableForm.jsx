@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { Form, Input, Button, Select, message, Drawer, Switch } from "antd";
+import { Button, Drawer, Form, Input, message, Select, Switch } from "antd";
 import { CoreAPI, RetailAPI } from "Core/API";
-import checkPermissions from "Retail/Helpers/checkPermissions";
-import { useSelector } from "react-redux";
 import { isObject } from "lodash-es";
+import React, { useEffect, useMemo, useState } from "react";
+import { useSelector } from "react-redux";
+import checkPermissions from "Retail/Helpers/checkPermissions";
 
 const CreateNewUserForm = ({ visible, onClose, isEdit, editData }) => {
   const [companies, setCompanies] = useState([]);
@@ -83,7 +83,7 @@ const CreateNewUserForm = ({ visible, onClose, isEdit, editData }) => {
             name={"companyId"}
             rules={[{ required: true, type: "string" }]}
           >
-            <Select>
+            <Select showSearch>
               {companies.map((i, k) => (
                 <Select.Option key={k} value={i.id}>
                   {i.name}
@@ -98,7 +98,7 @@ const CreateNewUserForm = ({ visible, onClose, isEdit, editData }) => {
           name={"districtId"}
           rules={[{ required: true, type: "string" }]}
         >
-          <Select>
+          <Select showSearch>
             {districts.map((i, k) => (
               <Select.Option key={k} value={i.id}>
                 {i.name}

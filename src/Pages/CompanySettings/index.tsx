@@ -1,73 +1,66 @@
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemText,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import React from "react";
-import { Outlet, RouteObject, useNavigate } from "react-router-dom";
-import SearchbarSection from "./Searchbar";
+import { Outlet, RouteObject } from "react-router-dom";
+import CompanySettingsCreateBuilding from "./CreateBuilding";
 
 const subRoutesList = [
-  { path: "/maple-board/searchbar", label: "maple searchbar" },
-  // { path: "/storyboard/modal", label: "modal" },
-  // { path: "/storyboard/drawer", label: "drawer" },
-  // { path: "/storyboard/input", label: "input" },
-  // { path: "/storyboard/pagination", label: "pagination" },
+  {
+    path: "/company-settings/coaching",
+    title: "Coaching Competences",
+  },
+  {
+    path: "/company-settings/buildings",
+    title: "Buildings",
+    element: <CompanySettingsCreateBuilding />,
+  },
+  {
+    path: "/company-settings/employees",
+    title: "Employees",
+  },
+  {
+    path: "/company-settings/users",
+    title: "Users",
+  },
+  {
+    path: "/company-settings/departments",
+    title: "Departments",
+  },
+  {
+    path: "/company-settings/roles",
+    title: "Roles",
+  },
+  {
+    path: "/company-settings/permissions",
+    title: "Permissions",
+  },
+  {
+    path: "/company-settings/districts",
+    title: "Districts",
+  },
+  {
+    path: "/company-settings/locations",
+    title: "Locations",
+  },
+  {
+    path: "/company-settings/regions",
+    title: "Regions",
+  },
+  {
+    path: "/company-settings/countries",
+    title: "Countries",
+  },
 ];
 
-const SidebarLinks = () => {
-  const navigate = useNavigate();
-  return (
-    <Box
-      position={"sticky"}
-      top={100}
-      minWidth={200}
-      boxShadow={3}
-      bgcolor={"background.paper"}
-      alignItems="flex-start"
-      p={1}
-      borderRadius={1.5}
-    >
-      <List
-        subheader={
-          <Typography m={2} variant="caption">
-            Components
-          </Typography>
-        }
-      >
-        {subRoutesList.map(({ path, label }) => (
-          <ListItem dense button onClick={() => navigate(path)} id={path}>
-            <ListItemText
-              primary={label}
-              primaryTypographyProps={{ sx: { textTransform: "capitalize" } }}
-            />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-};
-
-const MapleBoardRoutes: RouteObject = {
-  path: "/maple-board",
+const CompanySettingRoutes: RouteObject = {
+  path: "/company-settings",
   element: (
     <Stack direction={"row"} gap={4}>
       <Box width="100%">
         <Outlet />
       </Box>
-      <SidebarLinks />
     </Stack>
   ),
-  children: [
-    {
-      path: "/maple-board/searchbar",
-      element: <SearchbarSection />,
-      index: true,
-    },
-  ],
+  children: subRoutesList,
 };
 
-export default MapleBoardRoutes;
+export default CompanySettingRoutes;

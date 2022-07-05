@@ -140,7 +140,7 @@ const CreateNewUserForm = () => {
               name={"company"}
               rules={[{ required: true, type: "string" }]}
             >
-              <Select>
+              <Select showSearch>
                 {companies.map((i, k) => (
                   <Select.Option key={k} value={i.id}>
                     {i.name}
@@ -154,7 +154,7 @@ const CreateNewUserForm = () => {
             name={["departments"]}
             rules={[{ required: false, type: "string" }]}
           >
-            <Select>
+            <Select showSearch>
               {(departments || []).map((i, k) => (
                 <Select.Option value={i.id}>{i.name}</Select.Option>
               ))}
@@ -165,7 +165,7 @@ const CreateNewUserForm = () => {
             name={["permissionId"]}
             rules={[{ required: true, type: "string" }]}
           >
-            <Select>
+            <Select showSearch>
               {(permissions || []).map((i, k) => (
                 <Select.Option value={i.id}>{i.name}</Select.Option>
               ))}
@@ -176,7 +176,7 @@ const CreateNewUserForm = () => {
             name={["buildingId"]}
             rules={[{ required: false, type: "string" }]}
           >
-            <Select>
+            <Select showSearch>
               {(buildings || []).map((i, k) => (
                 <Select.Option value={i.id}>{i.name}</Select.Option>
               ))}

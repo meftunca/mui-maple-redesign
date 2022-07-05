@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Form, Input, Button, Select, message, Drawer, Checkbox } from "antd";
+import { Button, Checkbox, Drawer, Form, Input, message, Select } from "antd";
 import { CoreAPI, RetailAPI } from "Core/API";
-import checkPermissions from "Retail/Helpers/checkPermissions";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import checkPermissions from "Retail/Helpers/checkPermissions";
 import { fetchBuilding, fetchEmployees } from "Retail/state/actions/retail";
 
 const CreateNewUserForm = ({ visible, onClose, isEdit, editData }) => {
@@ -81,7 +81,7 @@ const CreateNewUserForm = ({ visible, onClose, isEdit, editData }) => {
               name={"optionalCompanyId"}
               // rules={[{ required: true, type: "string" }]}
             >
-              <Select>
+              <Select showSearch>
                 {companies.map((i, k) => (
                   <Select.Option key={k} value={i.id}>
                     {i.name}
@@ -105,7 +105,7 @@ const CreateNewUserForm = ({ visible, onClose, isEdit, editData }) => {
             <Input />
           </Form.Item>
           <Form.Item label="Çalıştığı Mağaza" name={["buildingId"]}>
-            <Select>
+            <Select showSearch>
               {(buildings || []).map((i, k) => (
                 <Select.Option key={i.id} value={i.id}>
                   {i.name}
@@ -118,7 +118,7 @@ const CreateNewUserForm = ({ visible, onClose, isEdit, editData }) => {
             name={"managedBy"}
             rules={[{ required: true }]}
           >
-            <Select>
+            <Select showSearch>
               {users.map((i, k) => (
                 <Select.Option key={k} value={i.id}>
                   {i.name}

@@ -10,7 +10,7 @@ import * as React from "react";
 import useThemeController from "../Store/theme";
 import AppDrawer from "./AppDrawer";
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 interface Props {
   /**
